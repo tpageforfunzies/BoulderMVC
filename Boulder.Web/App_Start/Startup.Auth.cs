@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Boulder.Web.Models;
+using Boulder.Data;
 
 namespace Boulder.Web
 {
