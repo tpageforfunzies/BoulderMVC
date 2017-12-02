@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +258,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Route\Create.cshtml" />
+    <Content Include="Views\Route\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,6 +281,10 @@
     <ProjectReference Include="..\Boulder.Data\Boulder.Data.csproj">
       <Project>{de88a970-9f75-455f-bf38-38228abfcdaa}</Project>
       <Name>Boulder.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Boulder.Models\Boulder.Models.csproj">
+      <Project>{c72d59c7-5c39-4fba-933c-1cbda33e6a1b}</Project>
+      <Name>Boulder.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Boulder.Services\Boulder.Services.csproj">
       <Project>{7dacd5c2-0412-46ae-99c7-bb9ab69ef272}</Project>

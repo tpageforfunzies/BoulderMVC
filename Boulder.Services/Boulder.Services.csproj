@@ -4,4 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Boulder.Data\Boulder.Data.csproj" />
+    <ProjectReference Include="..\Boulder.Models\Boulder.Models.csproj" />
+  </ItemGroup>
+
 </Project>
