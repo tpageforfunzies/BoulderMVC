@@ -43,6 +43,27 @@ namespace Boulder.Services
             }
         }
 
+        public RouteDetail GetRouteById(int routeId)
+        {
+            using(var db = new DbContext())
+            {
+                var route =
+                    db
+                        .Routes
+                        .Single(e => e.RouteId == routeId && e.UserId == _userId);
+
+                return
+                    new RouteDetail
+                    {
+                        RouteId = route.RouteId,
+                        RouteGrade = route.RouteGrade,
+                        RouteName = route.RouteName,
+                        RouteNote = route.RouteNote,
+                        DateSent = route.DateSent
+                    };
+            }
+        }
+
         public bool CreateRoute(RouteCreate model)
         {
             var route =

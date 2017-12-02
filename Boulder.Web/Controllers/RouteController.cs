@@ -31,7 +31,9 @@ namespace Boulder.Web.Controllers
         // GET: Route/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var service = CreateRouteService();
+            var model = service.GetRouteById(id);
+            return View(model);
         }
 
         // GET: Route/Create
