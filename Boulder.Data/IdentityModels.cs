@@ -20,16 +20,16 @@ namespace Boulder.Data
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class DbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public DbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static DbContext Create()
         {
-            return new ApplicationDbContext();
+            return new DbContext();
         }
 
         public DbSet<Route> Routes { get; set; }
