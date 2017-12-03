@@ -13,7 +13,7 @@ namespace Boulder.Data
         public Guid UserId { get; set; }
         public string RouteName { get; set; }
         public string RouteNote { get; set; }
-        public DateTimeOffset DateSent { get; set; }
+        public DateTime DateSent { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }

@@ -25,8 +25,12 @@ namespace Boulder.Web.Controllers
         {
             var service = CreateRouteService();
             var model = service.GetRoutes();
+
             var stats = service.GetStats();
             ViewData.Add("Stats", stats);
+
+            var filter = new RouteFilter();
+            ViewData.Add("Filter", filter);
             return View(model);
         }
 

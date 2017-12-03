@@ -266,6 +266,7 @@
     <Content Include="Views\Shared\_CommentPartial.cshtml" />
     <Content Include="Views\Shared\_FilterPartial.cshtml" />
     <Content Include="Views\Shared\_StatsPartial.cshtml" />
+    <Content Include="Views\Shared\_FilterForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

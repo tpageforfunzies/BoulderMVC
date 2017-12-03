@@ -10,6 +10,6 @@ namespace Boulder.Models
         public int RouteGrade { get; set; }
         public string RouteName { get; set; }
         public string RouteNote { get; set; }
-        public DateTimeOffset DateSent { get; set; }
+        public DateTime DateSent { get; set; }
     }
 }

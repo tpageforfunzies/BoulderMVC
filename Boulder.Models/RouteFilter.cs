@@ -9,7 +9,7 @@ namespace Boulder.Models
         public int HighestGrade { get; set; }
         public int LowestGrade { get; set; }
         public int AverageGrade { get; set; }
-        public DateTimeOffset StartDate { get; set; }
-        public DateTimeOffset EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
