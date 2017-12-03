@@ -53,7 +53,7 @@ namespace Boulder.Web.Controllers
             }
 
             var service = CreateRouteService();
-            
+
             if (service.CreateRoute(model))
             {
                 TempData["CreateResult"] = "Route added successfully.";
@@ -67,23 +67,39 @@ namespace Boulder.Web.Controllers
         // GET: Route/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var service = CreateRouteService();
+            var detail = service.GetRouteById(id);
+            var model =
+                new RouteEdit
+                {
+                    RouteId = detail.RouteId,
+                    RouteGrade = detail.RouteGrade,
+                    RouteName = detail.RouteName,
+                    RouteNote = detail.RouteNote,
+                    DateSent = detail.DateSent,
+                };
+
+            return View(model);
         }
 
         // POST: Route/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(RouteEdit model)
         {
-            try
-            {
-                // TODO: Add update logic here
 
+
+            var service = CreateRouteService();
+
+            if (service.UpdateRoute(model))
+            {
+                TempData["SaveResult"] = "Your route was updated";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError("", "Your route could not be updated.");
+            return View(model);
+
         }
 
         // GET: Route/Delete/5

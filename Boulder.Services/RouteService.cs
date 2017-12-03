@@ -36,7 +36,7 @@ namespace Boulder.Services
                                     RouteName = e.RouteName,
                                     RouteNote = e.RouteNote,
                                     DateSent = e.DateSent
-                                }
+            }
                         );
                 return query.ToArray();
 
@@ -59,7 +59,7 @@ namespace Boulder.Services
                         RouteGrade = route.RouteGrade,
                         RouteName = route.RouteName,
                         RouteNote = route.RouteNote,
-                        DateSent = route.DateSent
+                        DateSent = route.DateSent,
                     };
             }
         }
@@ -78,6 +78,24 @@ namespace Boulder.Services
             using (var db = new DbContext())
             {
                 db.Routes.Add(route);
+                return db.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateRoute(RouteEdit model)
+        {
+            using (var db = new DbContext())
+            {
+                var route =
+                    db
+                        .Routes
+                        .Single(e => e.RouteId == model.RouteId && e.UserId == _userId);
+
+                route.RouteName = model.RouteName;
+                route.RouteGrade = model.RouteGrade;
+                route.RouteNote = model.RouteNote;
+                route.DateSent = model.DateSent;
+
                 return db.SaveChanges() == 1;
             }
         }
