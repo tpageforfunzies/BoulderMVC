@@ -73,7 +73,7 @@ namespace Boulder.Services
                     RouteName = model.RouteName,
                     RouteGrade = model.RouteGrade,
                     RouteNote = model.RouteNote,
-                    DateSent = DateTime.Now
+                    DateSent = DateTime.Now.Date
                 };
             using (var db = new DbContext())
             {
