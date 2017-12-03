@@ -1,1 +1,31 @@
-﻿
+﻿@model Boulder.Models.RouteStat
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HighestGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HighestGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AverageGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AverageGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LowestGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LowestGrade)
+        </dd>
+    </dl>
+</div>

@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Boulder.Models.RouteListItem>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -55,3 +56,5 @@
 }
 
 </table>
+@Html.Partial("_StatsPartial", ViewData["Stats"])
+

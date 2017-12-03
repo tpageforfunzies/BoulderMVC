@@ -113,6 +113,66 @@ namespace Boulder.Services
             }
         }
 
-        
+        public RouteStat GetStats()
+        {
+            using (var db = new DbContext())
+            {
+                //Gets all of the routes for the user and puts them in an array
+                var query =
+                    db
+                        .Routes
+                        .Where(e => e.UserId == _userId)
+                        .Select(
+                            e =>
+                                new RouteListItem
+                                {
+                                    RouteId = e.RouteId,
+                                    RouteGrade = e.RouteGrade,
+                                    RouteName = e.RouteName,
+                                    RouteNote = e.RouteNote,
+                                    DateSent = e.DateSent
+                                }
+                        );
+                var routeArray = query.ToArray();
+
+                //Goes through the array and formulates stats, then creates and returns a 
+                //RouteStat object with the stats
+
+                //will increment with every loop
+                int count = 0;
+                //will add up all the route grades and be divided by count to get average
+                int sum = 0;
+                //will be checked against every loop, if current is higher, will reassign
+                int highest = 0;
+                //will be checked against every loop, if current is lower, will reassign
+                int lowest = 100;
+
+                foreach (var route in routeArray)
+                {
+                    if (route.RouteGrade > highest)
+                    {
+                        highest = route.RouteGrade;
+                    }
+                    if (route.RouteGrade < lowest)
+                    {
+                        lowest = route.RouteGrade;
+                    }
+                    count++;
+                    sum += route.RouteGrade;
+                }
+
+                return new RouteStat
+                {
+                    HighestGrade = highest,
+                    LowestGrade = lowest,
+                    AverageGrade = sum / count
+                };
+            }
+
+            
+
+
+
+        }
     }
 }

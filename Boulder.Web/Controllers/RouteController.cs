@@ -25,6 +25,8 @@ namespace Boulder.Web.Controllers
         {
             var service = CreateRouteService();
             var model = service.GetRoutes();
+            var stats = service.GetStats();
+            ViewData.Add("Stats", stats);
             return View(model);
         }
 
