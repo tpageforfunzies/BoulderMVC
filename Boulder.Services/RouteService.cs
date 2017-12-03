@@ -73,7 +73,7 @@ namespace Boulder.Services
                     RouteName = model.RouteName,
                     RouteGrade = model.RouteGrade,
                     RouteNote = model.RouteNote,
-                    DateSent = DateTimeOffset.Now
+                    DateSent = DateTime.Now
                 };
             using (var db = new DbContext())
             {
@@ -96,6 +96,19 @@ namespace Boulder.Services
                 route.RouteNote = model.RouteNote;
                 route.DateSent = model.DateSent;
 
+                return db.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteRoute(int routeId)
+        {
+            using (var db = new DbContext())
+            {
+                var route =
+                    db
+                        .Routes
+                        .Single(e => e.RouteId == routeId && e.UserId == _userId);
+                db.Routes.Remove(route);
                 return db.SaveChanges() == 1;
             }
         }

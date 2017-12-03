@@ -103,18 +103,27 @@ namespace Boulder.Web.Controllers
         }
 
         // GET: Route/Delete/5
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var service = CreateRouteService();
+            var model = service.GetRouteById(id);
+
+            return View(model);
         }
 
         // POST: Route/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRoute(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                var service = CreateRouteService();
+                service.DeleteRoute(id);
+
+                TempData["SaveResult"] = "Route Deleted";
 
                 return RedirectToAction("Index");
             }
